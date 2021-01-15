@@ -40,13 +40,13 @@ export class ComboBox extends LitElement {
   render() {
     return html`
       <select
-        name="${ ifDefined(this.name) }"
-        @change="${ this.dispatchEvent(new Event('change')) }"
+        name="${ifDefined(this.name)}"
+        @change="${() => this.dispatchEvent(new Event('change'))}"
       >
         ${this.items.map((item, i) => html`
           <option
             value="${item[Item.Value]}"
-            ?selected="${ i === this.selectedIndex }"
+            ?selected="${i === this.selectedIndex}"
           >${item[Item.Name]}</option>
         `)}
       </select>
