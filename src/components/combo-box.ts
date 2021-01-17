@@ -1,36 +1,25 @@
 import { LitElement, html, property, query } from 'lit-element'
 import { ifDefined } from 'lit-html/directives/if-defined'
-import { addStyleSheet } from 'userstyle'
-
-enum Item {
-  Name = 0
-, Value = 1
-}
+import { addStyleSheet, createClassname } from 'userstyle'
 
 export class ComboBox extends LitElement {
+  _datalistId = createClassname()
+
   @property()
-  items: Array<[string, string]> = []
+  items: string[] = []
 
   @property({ attribute: true })
   name?: string
 
-  @query('select')
-  _selectElement!: HTMLSelectElement
-
-  get selectedIndex(): number {
-    return this._selectElement.selectedIndex
-  }
-
-  set selectedIndex(val: number) {
-    this._selectElement.selectedIndex = val
-  }
+  @query('input')
+  _inputElement!: HTMLInputElement
 
   get value(): string {
-    return this._selectElement.value
+    return this._inputElement.value
   }
 
   set value(val: string) {
-    this._selectElement.value = val
+    this._inputElement.value = val
   }
 
   createRenderRoot() {
@@ -39,17 +28,15 @@ export class ComboBox extends LitElement {
 
   render() {
     return html`
-      <select
+      <input
         name="${ifDefined(this.name)}"
-        @change="${() => this.dispatchEvent(new Event('change'))}"
-      >
-        ${this.items.map((item, i) => html`
-          <option
-            value="${item[Item.Value]}"
-            ?selected="${i === this.selectedIndex}"
-          >${item[Item.Name]}</option>
+        list="${this._datalistId}"
+      />
+      <datalist id="${this._datalistId}">
+        ${this.items.map(item => html`
+          <option value="${item}" />
         `)}
-      </select>
+      </datalist>
     `
   }
 }
@@ -59,7 +46,7 @@ addStyleSheet(`
     display: inline-flex;
   }
 
-  kiss-combo-box select {
+  kiss-combo-box input {
     width: 100%;
   }
 `)

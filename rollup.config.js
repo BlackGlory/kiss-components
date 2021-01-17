@@ -64,6 +64,38 @@ function createOptions({ directory, target }) {
       , terser()
       ]
     }
+  , {
+      input: 'src/components/dropdown-list.ts'
+    , output: createMultiEntryOutput('components')
+    , plugins: [
+        ...commonPlugins
+      , analyze({ summaryOnly: true })
+      ]
+    }
+  , {
+      input: 'src/components/dropdown-list.ts'
+    , output: createMultiEntryMinification('components')
+    , plugins: [
+        ...commonPlugins
+      , terser()
+      ]
+    }
+  , {
+      input: 'src/components/list-box.ts'
+    , output: createMultiEntryOutput('components')
+    , plugins: [
+        ...commonPlugins
+      , analyze({ summaryOnly: true })
+      ]
+    }
+  , {
+      input: 'src/components/list-box.ts'
+    , output: createMultiEntryMinification('components')
+    , plugins: [
+        ...commonPlugins
+      , terser()
+      ]
+    }
   ]
 
   function createSingleEntryOutput(name) {
