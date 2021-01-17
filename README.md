@@ -24,7 +24,7 @@ interface ComboBox {
   name?: string
 
   // property
-  items: string[] = [] // value[]
+  items: Array<[string, string]> = [] // Array<[name, value]>
 
   // pass-through properties
   get value(): string
@@ -38,8 +38,8 @@ interface ComboBox {
 ### DropDownList
 
 ```ts
-// kiss-drop-down-list
-interface DropDownList {
+// kiss-dropdrop-list
+interface DropdownList {
   // attribute
   name?: string
 
@@ -61,8 +61,8 @@ interface DropDownList {
 ### ListBox
 
 ```ts
-// kiss-drop-down-list
-interface DropDownList {
+// kiss-list-box
+interface ListBox {
   // attribute
   name?: string
   size: number = 2

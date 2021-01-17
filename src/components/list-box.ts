@@ -1,4 +1,4 @@
-import { LitElement, html, property, query } from 'lit-element'
+import { LitElement, customElement, html, property, query } from 'lit-element'
 import { ifDefined } from 'lit-html/directives/if-defined'
 import { addStyleSheet } from 'userstyle'
 
@@ -7,6 +7,17 @@ enum Item {
 , Value = 1
 }
 
+addStyleSheet(`
+  kiss-list-box {
+    display: inline-flex;
+  }
+
+  kiss-list-box select {
+    width: 100%;
+  }
+`)
+
+@customElement('kiss-list-box')
 export class ListBox extends LitElement {
   @property()
   items: Array<[string, string]> = []
@@ -57,15 +68,3 @@ export class ListBox extends LitElement {
     `
   }
 }
-
-addStyleSheet(`
-  kiss-list-box {
-    display: inline-flex;
-  }
-
-  kiss-list-box select {
-    width: 100%;
-  }
-`)
-
-customElements.define('kiss-list-box', ListBox)
