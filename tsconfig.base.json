@@ -3,14 +3,15 @@
     "target": "ES2019"
   , "module": "CommonJS"
   , "strict": true
-  , "noUnusedLocals": true
-  , "noUnusedParameters": true
+  , "noUnusedLocals": false
+  , "noUnusedParameters": false
   , "experimentalDecorators": true
   , "baseUrl": "."
   , "paths": {
       "@src/*": ["src/*"]
     , "@test/*": ["__tests__/*"]
     , "@components/*": ["src/components/*"]
+    , "@define/*": ["src/define/*"]
     }
   }
 }

@@ -17,7 +17,6 @@ addStyleSheet(`
   }
 `)
 
-@customElement('kiss-dropdown-list')
 export class DropdownList extends LitElement {
   @property()
   items: Array<[string, string]> = []
@@ -29,6 +28,7 @@ export class DropdownList extends LitElement {
   _selectElement!: HTMLSelectElement
 
   get selectedIndex(): number {
+    if (!this._selectElement) return -1
     return this._selectElement.selectedIndex
   }
 

@@ -1,4 +1,4 @@
-import { LitElement, customElement, html, property, query } from 'lit-element'
+import { LitElement, html, property, query } from 'lit-element'
 import { ifDefined } from 'lit-html/directives/if-defined'
 import { addStyleSheet, createClassname } from 'userstyle'
 
@@ -17,7 +17,6 @@ addStyleSheet(`
   }
 `)
 
-@customElement('kiss-combo-box')
 export class ComboBox extends LitElement {
   _datalistId = createClassname()
 
@@ -47,6 +46,7 @@ export class ComboBox extends LitElement {
       <input
         name="${ifDefined(this.name)}"
         list="${this._datalistId}"
+        @change="${() => this.dispatchEvent(new Event('change'))}"
       />
       <datalist id="${this._datalistId}">
         ${this.items.map(item => html`

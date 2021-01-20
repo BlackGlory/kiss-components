@@ -17,7 +17,6 @@ addStyleSheet(`
   }
 `)
 
-@customElement('kiss-list-box')
 export class ListBox extends LitElement {
   @property()
   items: Array<[string, string]> = []
@@ -32,6 +31,7 @@ export class ListBox extends LitElement {
   _selectElement!: HTMLSelectElement
 
   get selectedIndex(): number {
+    if (!this._selectElement) return -1
     return this._selectElement.selectedIndex
   }
 
