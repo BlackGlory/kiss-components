@@ -32,6 +32,18 @@ describe('kiss-list-box', () => {
     })
   })
 
+  describe('size(attribute)', () => {
+    describe('set size', () => {
+      it('pass-through to internal select element', async () => {
+        await act(() => {
+          document.body.innerHTML = '<kiss-list-box size="3"></kiss-list-box>'
+        })
+
+        $('kiss-list-box select[size="3"]')
+      })
+    })
+  })
+
   describe('value(pass-through property)', () => {
     describe('set value', () => {
       it('pass-through to internal select element', async () => {
