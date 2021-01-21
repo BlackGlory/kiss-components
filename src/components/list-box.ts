@@ -19,7 +19,7 @@ addStyleSheet(`
 
 export class ListBox extends LitElement {
   @property()
-  items: Array<[string, string]> = []
+  items: Array<[name: string, value: string]> = []
 
   @property({ attribute: true })
   name?: string
@@ -28,7 +28,7 @@ export class ListBox extends LitElement {
   size: number = 2
 
   @query('select')
-  _selectElement!: HTMLSelectElement
+  private _selectElement!: HTMLSelectElement
 
   get selectedIndex(): number {
     if (!this._selectElement) return -1

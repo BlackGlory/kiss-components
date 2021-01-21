@@ -24,7 +24,7 @@ interface ComboBox {
   name?: string
 
   // property
-  items: Array<[string, string]> = [] // Array<[name, value]>
+  items: Array<[name: string, value: string]> = []
 
   // pass-through properties
   get value(): string
@@ -44,7 +44,7 @@ interface DropdownList {
   name?: string
 
   // property
-  items: Array<[string, string]> = [] // Array<[name, value]>
+  items: Array<[name: string, value: string]> = []
 
   // pass-through properties
   get selectedIndex(): number
@@ -68,7 +68,7 @@ interface ListBox {
   size: number = 2
 
   // property
-  items: Array<[string, string]> = [] // Array<[name, value]>
+  items: Array<[name: string, value: string]> = []
 
   // pass-through properties
   get selectedIndex(): number

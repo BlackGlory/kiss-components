@@ -18,16 +18,16 @@ addStyleSheet(`
 `)
 
 export class ComboBox extends LitElement {
-  _datalistId = createClassname()
-
   @property()
-  items: Array<[string, string]> = []
+  items: Array<[name: string, value: string]> = []
 
   @property({ attribute: true })
   name?: string
 
+  private _datalistId = createClassname()
+
   @query('input')
-  _inputElement!: HTMLInputElement
+  private _inputElement!: HTMLInputElement
 
   get value(): string {
     return this._inputElement.value

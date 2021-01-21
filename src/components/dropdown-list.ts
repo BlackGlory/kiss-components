@@ -19,13 +19,13 @@ addStyleSheet(`
 
 export class DropdownList extends LitElement {
   @property()
-  items: Array<[string, string]> = []
+  items: Array<[name: string, value: string]> = []
 
   @property({ attribute: true })
   name?: string
 
   @query('select')
-  _selectElement!: HTMLSelectElement
+  private _selectElement!: HTMLSelectElement
 
   get selectedIndex(): number {
     if (!this._selectElement) return -1
