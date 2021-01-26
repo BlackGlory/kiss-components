@@ -48,55 +48,47 @@ function createOptions({ directory, target }) {
       , terser()
       ]
     }
-  , {
-      input: 'src/components/combo-box.ts'
-    , output: createMultiEntryOutput('components')
-    , plugins: [
-        ...commonPlugins
-      , analyze({ summaryOnly: true })
-      ]
-    }
-  , {
-      input: 'src/components/combo-box.ts'
-    , output: createMultiEntryMinification('components')
-    , plugins: [
-        ...commonPlugins
-      , terser()
-      ]
-    }
-  , {
-      input: 'src/components/dropdown-list.ts'
-    , output: createMultiEntryOutput('components')
-    , plugins: [
-        ...commonPlugins
-      , analyze({ summaryOnly: true })
-      ]
-    }
-  , {
-      input: 'src/components/dropdown-list.ts'
-    , output: createMultiEntryMinification('components')
-    , plugins: [
-        ...commonPlugins
-      , terser()
-      ]
-    }
-  , {
-      input: 'src/components/list-box.ts'
-    , output: createMultiEntryOutput('components')
-    , plugins: [
-        ...commonPlugins
-      , analyze({ summaryOnly: true })
-      ]
-    }
-  , {
-      input: 'src/components/list-box.ts'
-    , output: createMultiEntryMinification('components')
-    , plugins: [
-        ...commonPlugins
-      , terser()
-      ]
-    }
+  , ...createComponentOutput('combo-box')
+  , ...createComponentOutput('dropdown-list')
+  , ...createComponentOutput('list-box')
   ]
+
+  function createComponentOutput(name) {
+    return [
+      {
+        input: `src/components/${name}.ts`
+      , output: createMultiEntryOutput('components')
+      , plugins: [
+          ...commonPlugins
+        , analyze({ summaryOnly: true })
+        ]
+      }
+    , {
+        input: `src/components/${name}.ts`
+      , output: createMultiEntryMinification('components')
+      , plugins: [
+          ...commonPlugins
+        , terser()
+        ]
+      }
+    , {
+        input: `src/define/${name}.ts`
+      , output: createMultiEntryOutput('define')
+      , plugins: [
+          ...commonPlugins
+        , analyze({ summaryOnly: true })
+        ]
+      }
+    , {
+        input: `src/define/${name}.ts`
+      , output: createMultiEntryMinification('define')
+      , plugins: [
+          ...commonPlugins
+        , terser()
+        ]
+      }
+    ]
+  }
 
   function createSingleEntryOutput(name) {
     return [
@@ -152,7 +144,7 @@ function createOptions({ directory, target }) {
   function createMultiEntryMinification(name) {
     return [
       {
-        dir: `dist/${directory}/es/${name}`
+        dir: `dist/${directory}/es/${name}-min`
       , format: 'es'
       , sourcemap: true
       , manualChunks: {
