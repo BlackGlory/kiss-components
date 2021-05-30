@@ -91,7 +91,7 @@ describe('kiss-list-box', () => {
       })
     })
 
-    // wait for jest v27.0.0-next.3
+    // wait for jest
 
     // describe('set selectedIndex to internal select element', () => {
     //   it('reflect to component', async () => {
