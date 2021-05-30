@@ -3,8 +3,10 @@ const { compilerOptions } = require('./tsconfig.base.json')
 
 const esModules = ['lit-element', 'lit-html'].join('|');
 
+/** @typedef {import('ts-jest/dist/types')} */
 module.exports = {
-  testMatch: ['**/__tests__/**/?(*.)+(spec|test).[jt]s?(x)']
+  testEnvironment: 'jsdom'
+, testMatch: ['**/__tests__/**/?(*.)+(spec|test).[jt]s?(x)']
 , transform: {
     '^.+\\.ts$': 'ts-jest'
   , [`(${esModules}).+\\.js$`]: 'babel-jest'
