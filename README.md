@@ -2,8 +2,7 @@
 
 Keep web components simple, stupid:
 - No ShadowDOM
-- No slots
-- No nested elements
+- Top-down customization based on CSS selectors
 
 ## Install
 
