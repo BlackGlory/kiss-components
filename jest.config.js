@@ -1,7 +1,7 @@
 const { pathsToModuleNameMapper } = require('ts-jest/utils')
 const { compilerOptions } = require('./tsconfig.base.json')
 
-const esModules = ['lit-element', 'lit-html'].join('|');
+const esModules = ['lit-element', 'lit-html'].join('|')
 
 /** @typedef {import('ts-jest/dist/types')} */
 module.exports = {
